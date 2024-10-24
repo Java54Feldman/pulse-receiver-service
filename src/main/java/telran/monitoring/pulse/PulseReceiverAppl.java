@@ -105,8 +105,8 @@ public class PulseReceiverAppl {
 			logger.warning("The pulse is too high " + json);
 		} else if(pulseValue < envWarnMinPulse && pulseValue >= envMinThresholdPulse) {
 			logger.warning("The pulse is too low " + json);
-		} else if(pulseValue < envMinThresholdPulse && pulseValue > envMaxThresholdPulse) {
-			logger.severe("The pulse out of range" + json);
+		} else if(pulseValue < envMinThresholdPulse || pulseValue > envMaxThresholdPulse) {
+			logger.severe("The pulse out of range " + json);
 		}
 	}
 
