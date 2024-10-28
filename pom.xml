@@ -6,8 +6,8 @@
 	<artifactId>pulse-receiver-service</artifactId>
 	<version>0.0.1</version>
 	<properties>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -15,53 +15,56 @@
 			<artifactId>json</artifactId>
 			<version>20240303</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb -->
+		<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/dynamodb -->
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>dynamodb</artifactId>
-			<version>2.28.26</version>
+			<version>2.28.24</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>2.0.16</version>
+			<groupId>telran.monitoring</groupId>
+			<artifactId>pulse-sender</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 	<build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <!-- Here come other details
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<!-- Here come other details
             ...
             -->
-            <configuration>
-              <archive>
-                <manifest>
-                  <addClasspath>true</addClasspath>
-                  <mainClass>telran.monitoring.pulse.PulseReceiverAppl</mainClass>
-                </manifest>
-              </archive>
-            </configuration>
-            <!-- Here come other details
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>telran.monitoring.pulse.PulseReceiverAppl</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<!-- Here come other details
             ...
             -->
-          </plugin>
-          <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.6.0</version>
-        <configuration>
-          <!-- put your configurations here -->
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-         </plugins>
-        </build>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<!-- put your configurations here -->
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
